@@ -7,14 +7,6 @@ import java.util.Date;
 
 @Document(collection = "user")
 public class User {
-    public User(String name, String phone, String email, String password, Date date_of_birth) {
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.password = password;
-        this.date_of_birth = date_of_birth;
-    }
-
     @Id
     private String id;
     private String name;
@@ -22,7 +14,16 @@ public class User {
     private String email;
     private String password;
     private Date date_of_birth;
+    private Date registered_on;
 
+    public User(String name, String phone, String email, String password, Date date_of_birth) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.password = password;
+        this.date_of_birth = date_of_birth;
+        this.registered_on = new Date();
+    }
 
     public String getId() {
         return id;
@@ -72,6 +73,13 @@ public class User {
         this.date_of_birth = date_of_birth;
     }
 
+    public Date getRegistered_on() {
+        return registered_on;
+    }
+
+    public void setRegistered_on(Date registered_on) {
+        this.registered_on = registered_on;
+    }
 
 
 }
