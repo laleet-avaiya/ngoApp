@@ -10,18 +10,30 @@ import java.util.List;
 public class Event {
     @Id
     private String id;
+
+    private String ngo_id;
     private String title;
     private String description;
-    private Date event_on;
-//    private List<Volunteer> volunteers;
+    private Date posted_on;
 
-    public Event(String title, String description, Date event_on, List<Volunteer> volunteers) {
+
+    public Event(String ngo_id, String title, String description) {
+        this.ngo_id = ngo_id;
         this.title = title;
         this.description = description;
-        this.event_on = event_on;
-//        this.volunteers = volunteers;
+        this.posted_on = new Date();
     }
 
+
+
+
+    public String getNgo_id() {
+        return ngo_id;
+    }
+
+    public void setNgo_id(String ngo_id) {
+        this.ngo_id = ngo_id;
+    }
     public String getId() {
         return id;
     }
@@ -47,19 +59,15 @@ public class Event {
     }
 
     public Date getEvent_on() {
-        return event_on;
+        return posted_on;
     }
 
-    public void setEvent_on(Date event_on) {
-        this.event_on = event_on;
+    public void setEvent_on(Date posted_on) {
+        this.posted_on = posted_on;
     }
 
-//    public List<Volunteer> getVolunteers() {
-//        return volunteers;
-//    }
-//
-//    public void setVolunteers(List<Volunteer> volunteers) {
-//        this.volunteers = volunteers;
-//    }
+
+
+
 
 }
