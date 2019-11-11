@@ -7,6 +7,7 @@ import ngo.ngoapp.mongorepository.NGORepository;
 import ngo.ngoapp.mongorepository.PostRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -93,9 +94,9 @@ public class NGOController {
 
     // get list of post for given NGO id
     @GetMapping("/post")
-    public Optional<Post> getPosts(@RequestParam String ngo_id){
-        Optional<Post> posts = this.postRepository.findById(ngo_id);
-        return posts;
+    public List<Post> getPosts(@RequestParam String ngo_id){
+        Post posts = (Post) this.postRepository.findAllById(Collections.singleton(ngo_id));
+        return (List<Post>) posts;
     }
 
 
