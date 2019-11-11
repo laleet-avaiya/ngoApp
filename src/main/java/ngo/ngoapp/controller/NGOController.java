@@ -1,6 +1,7 @@
 package ngo.ngoapp.controller;
 
 import ngo.ngoapp.model.NGO;
+import ngo.ngoapp.model.Post;
 import ngo.ngoapp.mongorepository.NGORepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -77,16 +78,16 @@ public class NGOController {
 
     // Add Post
 
-//    @PutMapping("/post")
-//    public NGO insert(@RequestParam String email,@RequestParam String title,@RequestParam String description){
-//        NGO ngo = this.ngoRepository.findByEmail(email);
-//
-//        List<Post> posts = ngo.getPosts();
-//        posts.add(new Post(title,description));
-//
-//        this.ngoRepository.save(ngo);
-//        return ngo;
-//    }
+    @PutMapping("/post")
+    public NGO insert(@RequestParam String email,@RequestParam String title,@RequestParam String description){
+        NGO ngo = this.ngoRepository.findByEmail(email);
+
+        List<Post> posts = ngo.getPosts();
+        posts.add(new Post(title,description));
+
+        this.ngoRepository.save(ngo);
+        return ngo;
+    }
 
 
 }
