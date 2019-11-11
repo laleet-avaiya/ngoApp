@@ -1,5 +1,6 @@
 package ngo.ngoapp.controller;
 
+import ngo.ngoapp.model.Event;
 import ngo.ngoapp.model.NGO;
 import ngo.ngoapp.model.Post;
 import ngo.ngoapp.mongorepository.EventRepository;
@@ -98,6 +99,22 @@ public class NGOController {
         List<Post> posts = this.postRepository.findAll();
         posts.removeIf(post -> !post.getNgo_id().equals(ngo_id));
         return posts;
+    }
+
+    // Add Event
+    @PutMapping("/event")
+    public Event insertEvent(@RequestParam String ngo_id,@RequestParam String title,@RequestParam String description){
+        Event event = new Event(ngo_id,title,description);
+        this.eventRepository.save(event);
+        return event;
+    }
+
+    // get list of event for given NGO id
+    @GetMapping("/event")
+    public List<Event> getEvents(@RequestParam String ngo_id){
+        List<Event> events = this.eventRepository.findAll();
+        events.removeIf(event -> !event.getNgo_id().equals(ngo_id));
+        return events;
     }
 
 
