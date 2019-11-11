@@ -70,8 +70,8 @@ public class DbSeeder implements CommandLineRunner {
                 new Address("301 Abhishree Adroit","Near Swaminarayan Temple Mansi Circle,Vastrapur",380015,"Ahmedabad","india")
         );
 
-         this.ngoRepository.deleteAll();
-         this.ngoRepository.save(first_ngo);
+//         this.ngoRepository.deleteAll();
+//         this.ngoRepository.save(first_ngo);
 
         User first_user = new User(
                 "Maya",
