@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "user")
 public class User {
-    public User(String name, String phone, String email, String password, String date_of_birth) {
+    public User(String name, String phone, String email, String password, Date date_of_birth) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -19,7 +19,7 @@ public class User {
     private String phone;
     private String email;
     private String password;
-    private String date_of_birth;
+    private Date date_of_birth;
 
 
     public String getId() {
@@ -62,11 +62,11 @@ public class User {
         this.password = password;
     }
 
-    public String getDate_of_birth() {
+    public Date getDate_of_birth() {
         return date_of_birth;
     }
 
-    public void setDate_of_birth(String date_of_birth) {
+    public void setDate_of_birth(Date date_of_birth) {
         this.date_of_birth = date_of_birth;
     }
 
