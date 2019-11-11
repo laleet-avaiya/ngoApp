@@ -9,6 +9,7 @@ import java.util.Date;
 public class Volunteer {
     @Id
     private String id;
+
     private String user_id;
     private String event_id;
     private Date registered_on;

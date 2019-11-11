@@ -12,6 +12,9 @@ import java.util.List;
 public class NGO {
     @Id
     private String id;
+
+
+
     private String name;
     private String phone;
     private String email;
@@ -23,11 +26,9 @@ public class NGO {
     private Date registered_on;
 
     private Address address;
-//    private List<Post> posts;
-//    private List<Event> events;
-//    private List<Donation> donations;
 
-    public NGO(String name, String phone, String email, String password, boolean status, String logo, String tag_line, Address address, List<Post> posts, List<Event> events, List<Donation> donations) {
+
+    public NGO(String name, String phone, String email, String password, boolean status, String logo, String tag_line, Address address) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -36,9 +37,6 @@ public class NGO {
         this.logo = logo;
         this.tag_line = tag_line;
         this.address = address;
-//        this.posts = posts;
-//        this.events = events;
-//        this.donations = donations;
         this.registered_on = new Date();
     }
 
@@ -82,45 +80,13 @@ public class NGO {
         this.password = password;
     }
 
-    public boolean getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
     public void setStatus(boolean status) {
         this.status = status;
     }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-//    public List<Post> getPosts() {
-//        return posts;
-//    }
-//
-//    public void setPosts(List<Post> posts) {
-//        this.posts = posts;
-//    }
-//
-//    public List<Event> getEvents() {
-//        return events;
-//    }
-//
-//    public void setEvents(List<Event> events) {
-//        this.events = events;
-//    }
-//
-//    public List<Donation> getDonations() {
-//        return donations;
-//    }
-//
-//    public void setDonations(List<Donation> donations) {
-//        this.donations = donations;
-//    }
 
     public String getLogo() {
         return logo;
@@ -144,5 +110,13 @@ public class NGO {
 
     public void setRegistered_on(Date registered_on) {
         this.registered_on = registered_on;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

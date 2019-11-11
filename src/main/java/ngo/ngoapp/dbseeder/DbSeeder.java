@@ -67,14 +67,11 @@ public class DbSeeder implements CommandLineRunner {
                 false,
                 "http://manavkartavya.org/wp-content/themes/manavkartavya/images/logo.png",
                 "Help Needy People",
-                new Address("301 Abhishree Adroit","Near Swaminarayan Temple Mansi Circle,Vastrapur",380015,"Ahmedabad","india"),
-                new ArrayList<>(),
-                new ArrayList<>(),
-                new ArrayList<>()
+                new Address("301 Abhishree Adroit","Near Swaminarayan Temple Mansi Circle,Vastrapur",380015,"Ahmedabad","india")
         );
 
-//         this.ngoRepository.deleteAll();
-//         this.ngoRepository.save(first_ngo);
+         this.ngoRepository.deleteAll();
+         this.ngoRepository.save(first_ngo);
 
         User first_user = new User(
                 "Maya",
