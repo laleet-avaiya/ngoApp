@@ -60,19 +60,21 @@ public class DbSeeder implements CommandLineRunner {
         // this.adminRepository.saveAll(admins);
 
         NGO first_ngo = new NGO(
-                "Child Care",
-                "7359324923",
-                "info@childcare.com",
+                "MANAV KARTAVYA NGO",
+                "07948007195",
+                "info@manavkartavya.com",
                 "123456",
                 false,
-                new Address("22-24,Kalupur","Near Ranibag",382004,"Ahmedabad","india"),
+                "http://manavkartavya.org/wp-content/themes/manavkartavya/images/logo.png",
+                "Help Needy People",
+                new Address("301 Abhishree Adroit","Near Swaminarayan Temple Mansi Circle,Vastrapur",380015,"Ahmedabad","india"),
                 new ArrayList<>(),
                 new ArrayList<>(),
                 new ArrayList<>()
         );
 
         // this.ngoRepository.deleteAll();
-        // this.ngoRepository.save(first_ngo);
+         this.ngoRepository.save(first_ngo);
 
         User first_user = new User(
                 "Maya",

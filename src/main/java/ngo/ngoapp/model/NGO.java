@@ -3,6 +3,9 @@ package ngo.ngoapp.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Document(collection = "ngo")
@@ -15,25 +18,29 @@ public class NGO {
     private String password;
     private boolean status;
 
+    private String logo;
+    private String tag_line;
+    private Date registered_on;
+
     private Address address;
     private List<Post> posts;
     private List<Event> events;
     private List<Donation> donations;
 
-
-
-    public NGO(String name, String phone, String email, String password, boolean status, Address address, List<Post> posts, List<Event> events, List<Donation> donations) {
+    public NGO(String name, String phone, String email, String password, boolean status, String logo, String tag_line, Address address, List<Post> posts, List<Event> events, List<Donation> donations) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.password = password;
         this.status = status;
+        this.logo = logo;
+        this.tag_line = tag_line;
         this.address = address;
         this.posts = posts;
         this.events = events;
         this.donations = donations;
+        this.registered_on = new Date();
     }
-
 
     public String getId() {
         return id;
@@ -115,6 +122,27 @@ public class NGO {
         this.donations = donations;
     }
 
+    public String getLogo() {
+        return logo;
+    }
 
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
 
+    public String getTag_line() {
+        return tag_line;
+    }
+
+    public void setTag_line(String tag_line) {
+        this.tag_line = tag_line;
+    }
+
+    public Date getRegistered_on() {
+        return registered_on;
+    }
+
+    public void setRegistered_on(Date registered_on) {
+        this.registered_on = registered_on;
+    }
 }
