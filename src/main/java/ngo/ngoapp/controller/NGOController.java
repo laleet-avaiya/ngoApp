@@ -1,8 +1,6 @@
 package ngo.ngoapp.controller;
 
-import javafx.geometry.Pos;
 import ngo.ngoapp.model.NGO;
-import ngo.ngoapp.model.Post;
 import ngo.ngoapp.mongorepository.EventRepository;
 import ngo.ngoapp.mongorepository.NGORepository;
 import ngo.ngoapp.mongorepository.PostRepository;
