@@ -18,11 +18,11 @@ public class Donation {
     private Date donate_on;
     private String payment_mode;
 
-    public Donation(String user_id, String ngo_id, float amount, Date donate_on, String payment_mode) {
+    public Donation(String user_id, String ngo_id, float amount, String payment_mode) {
         this.user_id = user_id;
         this.ngo_id = ngo_id;
         this.amount = amount;
-        this.donate_on = donate_on;
+        this.donate_on = new Date();
         this.payment_mode = payment_mode;
     }
 
