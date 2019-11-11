@@ -95,10 +95,10 @@ public class NGOController {
     // get list of post for given NGO id
     @GetMapping("/post")
     public List<Post> getPosts(@RequestParam String ngo_id){
+        System.out.println(ngo_id);
+
         List<Post> posts = this.postRepository.findAll();
-
-        posts.removeIf(post -> post.getId() != ngo_id);
-
+        posts.removeIf(post -> !post.getId().equals(ngo_id));
         return posts;
     }
 
