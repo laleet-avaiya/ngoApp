@@ -15,12 +15,15 @@ public class Post {
     private String description;
     private Date posted_on;
 
+
+
     public Post(String ngo_id, String title, String description) {
         this.ngo_id = ngo_id;
         this.title = title;
         this.description = description;
         this.posted_on = new Date();
     }
+
 
 
 
