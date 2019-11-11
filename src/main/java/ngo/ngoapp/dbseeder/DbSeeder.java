@@ -73,7 +73,7 @@ public class DbSeeder implements CommandLineRunner {
                 new ArrayList<>()
         );
 
-        // this.ngoRepository.deleteAll();
+//         this.ngoRepository.deleteAll();
 //         this.ngoRepository.save(first_ngo);
 
         User first_user = new User(
