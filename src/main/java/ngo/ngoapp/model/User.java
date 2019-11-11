@@ -63,11 +63,4 @@ public class User {
         this.password = password;
     }
 
-    public String getDate_of_birth() {
-        return date_of_birth;
-    }
-
-    public void setDate_of_birth(String date_of_birth) {
-        this.date_of_birth = date_of_birth;
-    }
 }
