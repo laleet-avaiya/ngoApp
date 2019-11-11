@@ -1,7 +1,7 @@
 package ngo.ngoapp.controller;
 
-import ngomediator.ngomediatorapi.model.NGO;
-import ngomediator.ngomediatorapi.mongorepository.NGORepository;
+import ngo.ngoapp.model.NGO;
+import ngo.ngoapp.mongorepository.NGORepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

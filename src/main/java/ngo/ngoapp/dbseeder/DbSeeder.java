@@ -1,13 +1,13 @@
 package ngo.ngoapp.dbseeder;
 
 
-import ngomediator.ngomediatorapi.model.Address;
-import ngomediator.ngomediatorapi.model.Admin;
-import ngomediator.ngomediatorapi.model.NGO;
-import ngomediator.ngomediatorapi.model.User;
-import ngomediator.ngomediatorapi.mongorepository.AdminRepository;
-import ngomediator.ngomediatorapi.mongorepository.NGORepository;
-import ngomediator.ngomediatorapi.mongorepository.UserRepository;
+import ngo.ngoapp.model.Address;
+import ngo.ngoapp.model.Admin;
+import ngo.ngoapp.model.NGO;
+import ngo.ngoapp.model.User;
+import ngo.ngoapp.mongorepository.AdminRepository;
+import ngo.ngoapp.mongorepository.NGORepository;
+import ngo.ngoapp.mongorepository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

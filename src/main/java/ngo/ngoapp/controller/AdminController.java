@@ -1,7 +1,8 @@
 package ngo.ngoapp.controller;
 
-import ngomediator.ngomediatorapi.model.Admin;
-import ngomediator.ngomediatorapi.mongorepository.AdminRepository;
+import ngo.ngoapp.model.Admin;
+import ngo.ngoapp.mongorepository.AdminRepository;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;

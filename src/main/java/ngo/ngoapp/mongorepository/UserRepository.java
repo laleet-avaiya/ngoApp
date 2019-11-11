@@ -1,7 +1,7 @@
 package ngo.ngoapp.mongorepository;
 
 
-import ngomediator.ngomediatorapi.model.User;
+import ngo.ngoapp.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
