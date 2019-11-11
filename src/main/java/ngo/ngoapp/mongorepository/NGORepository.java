@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface NGORepository extends MongoRepository<NGO,String> {
     public NGO findByEmail(String email);
 
-    NGO findAll(String ngo_id);
+
 }
