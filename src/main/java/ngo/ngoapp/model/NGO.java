@@ -23,9 +23,9 @@ public class NGO {
     private Date registered_on;
 
     private Address address;
-    private List<Post> posts;
-    private List<Event> events;
-    private List<Donation> donations;
+//    private List<Post> posts;
+//    private List<Event> events;
+//    private List<Donation> donations;
 
     public NGO(String name, String phone, String email, String password, boolean status, String logo, String tag_line, Address address, List<Post> posts, List<Event> events, List<Donation> donations) {
         this.name = name;
@@ -36,9 +36,9 @@ public class NGO {
         this.logo = logo;
         this.tag_line = tag_line;
         this.address = address;
-        this.posts = posts;
-        this.events = events;
-        this.donations = donations;
+//        this.posts = posts;
+//        this.events = events;
+//        this.donations = donations;
         this.registered_on = new Date();
     }
 
@@ -98,29 +98,29 @@ public class NGO {
         this.address = address;
     }
 
-    public List<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
-    }
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
-
-    public List<Donation> getDonations() {
-        return donations;
-    }
-
-    public void setDonations(List<Donation> donations) {
-        this.donations = donations;
-    }
+//    public List<Post> getPosts() {
+//        return posts;
+//    }
+//
+//    public void setPosts(List<Post> posts) {
+//        this.posts = posts;
+//    }
+//
+//    public List<Event> getEvents() {
+//        return events;
+//    }
+//
+//    public void setEvents(List<Event> events) {
+//        this.events = events;
+//    }
+//
+//    public List<Donation> getDonations() {
+//        return donations;
+//    }
+//
+//    public void setDonations(List<Donation> donations) {
+//        this.donations = donations;
+//    }
 
     public String getLogo() {
         return logo;

@@ -1,10 +1,19 @@
 package ngo.ngoapp.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
 
+@Document(collection = "donation")
 public class Donation {
+
+    @Id
+    private String id;
+
     private String user_id;
     private String ngo_id;
+
     private float amount;
     private Date donate_on;
     private String payment_mode;
@@ -17,6 +26,13 @@ public class Donation {
         this.payment_mode = payment_mode;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getUser_id() {
         return user_id;

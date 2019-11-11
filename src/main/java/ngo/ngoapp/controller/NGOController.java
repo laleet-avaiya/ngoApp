@@ -1,8 +1,11 @@
 package ngo.ngoapp.controller;
 
+import javafx.geometry.Pos;
 import ngo.ngoapp.model.NGO;
 import ngo.ngoapp.model.Post;
+import ngo.ngoapp.mongorepository.EventRepository;
 import ngo.ngoapp.mongorepository.NGORepository;
+import ngo.ngoapp.mongorepository.PostRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,9 +15,13 @@ import java.util.List;
 public class NGOController {
 
     private NGORepository ngoRepository;
+    private EventRepository eventRepository;
+    private PostRepository postRepository;
 
-    public NGOController(NGORepository ngoRepository) {
+    public NGOController(NGORepository ngoRepository, EventRepository eventRepository, PostRepository postRepository) {
         this.ngoRepository = ngoRepository;
+        this.eventRepository = eventRepository;
+        this.postRepository = postRepository;
     }
 
     @PutMapping()
@@ -77,17 +84,20 @@ public class NGOController {
 
 
     // Add Post
-
     @PutMapping("/post")
-    public NGO insert(@RequestParam String email,@RequestParam String title,@RequestParam String description){
-        NGO ngo = this.ngoRepository.findByEmail(email);
-
-        List<Post> posts = ngo.getPosts();
-        posts.add(new Post(title,description));
-
-        this.ngoRepository.save(ngo);
-        return ngo;
+    public Post insert(@RequestParam String ngo_id,@RequestParam String title,@RequestParam String description){
+        Post post = new Post(ngo_id,title,description);
+        this.postRepository.save(post);
+        return post;
     }
+
+    // get list of post for given NGO id
+    @GetMapping("/post")
+    public List<Post> getPosts(@RequestParam String ngo_id){
+        List<Post> posts = this.postRepository.findAll(ngo_id);
+        return posts;
+    }
+
 
 
 }
