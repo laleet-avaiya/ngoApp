@@ -73,11 +73,19 @@ public class UserController {
         return volunteer;
     }
 
-    // get list of event for given NGO id
-    @GetMapping("/volunteer")
-    public List<Volunteer> getEvents(@RequestParam String user_id){
+    // get list of volunteer_by_user_id
+    @GetMapping("/volunteer_by_user_id")
+    public List<Volunteer> getVolunteersById(@RequestParam String user_id){
         List<Volunteer> volunteers = this.volunteerRepository.findAll();
         volunteers.removeIf(volunteer -> !volunteer.getUser_id().equals(user_id));
+        return volunteers;
+    }
+
+    // get list of volunteer_by_event_id
+    @GetMapping("/volunteer_by_event_id")
+    public List<Volunteer> getVolunteersByEventId(@RequestParam String event_id){
+        List<Volunteer> volunteers = this.volunteerRepository.findAll();
+        volunteers.removeIf(volunteer -> !volunteer.getEvent_id().equals(event_id));
         return volunteers;
     }
 
