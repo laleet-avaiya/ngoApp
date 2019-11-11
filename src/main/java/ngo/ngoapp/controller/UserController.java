@@ -2,7 +2,9 @@ package ngo.ngoapp.controller;
 
 
 import ngo.ngoapp.model.User;
+import ngo.ngoapp.model.Volunteer;
 import ngo.ngoapp.mongorepository.UserRepository;
+import ngo.ngoapp.mongorepository.VolunteerRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,10 +13,13 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
-    private UserRepository userRepository;
 
-    public UserController(UserRepository userRepository) {
+    private UserRepository userRepository;
+    private VolunteerRepository volunteerRepository;
+
+    public UserController(UserRepository userRepository, VolunteerRepository volunteerRepository) {
         this.userRepository = userRepository;
+        this.volunteerRepository = volunteerRepository;
     }
 
     @PutMapping()
@@ -57,6 +62,23 @@ public class UserController {
             System.out.println("Incorrect Password");
             return null;
         }
+    }
+
+
+    // Add Event
+    @PutMapping("/volunteer")
+    public Volunteer insertEvent(@RequestParam String user_id, @RequestParam String event_id){
+        Volunteer volunteer = new Volunteer(user_id,event_id);
+        this.volunteerRepository.save(volunteer);
+        return volunteer;
+    }
+
+    // get list of event for given NGO id
+    @GetMapping("/volunteer")
+    public List<Volunteer> getEvents(@RequestParam String user_id){
+        List<Volunteer> volunteers = this.volunteerRepository.findAll();
+        volunteers.removeIf(volunteer -> !volunteer.getUser_id().equals(user_id));
+        return volunteers;
     }
 
 }
