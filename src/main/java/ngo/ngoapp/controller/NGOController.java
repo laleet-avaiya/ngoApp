@@ -83,20 +83,20 @@ public class NGOController {
     }
 
 
-    // Add Post
-    @PutMapping("/post")
-    public Post insert(@RequestParam String ngo_id,@RequestParam String title,@RequestParam String description){
-        Post post = new Post(ngo_id,title,description);
-        this.postRepository.save(post);
-        return post;
-    }
-
-    // get list of post for given NGO id
-    @GetMapping("/post")
-    public List<Post> getPosts(@RequestParam String ngo_id){
-        List<Post> posts = this.postRepository.findAll(ngo_id);
-        return posts;
-    }
+//    // Add Post
+//    @PutMapping("/post")
+//    public Post insert(@RequestParam String ngo_id,@RequestParam String title,@RequestParam String description){
+//        Post post = new Post(ngo_id,title,description);
+//        this.postRepository.save(post);
+//        return post;
+//    }
+//
+//    // get list of post for given NGO id
+//    @GetMapping("/post")
+//    public List<Post> getPosts(@RequestParam String ngo_id){
+//        List<Post> posts = this.postRepository.findAll(ngo_id);
+//        return posts;
+//    }
 
 
 
