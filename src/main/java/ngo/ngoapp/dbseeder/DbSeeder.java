@@ -53,11 +53,11 @@ public class DbSeeder implements CommandLineRunner {
         );
 
         // Delete All AdminData
-        this.adminRepository.deleteAll();
+        // this.adminRepository.deleteAll();
 
         // Insert New Admin Data
-        List<Admin> admins = Arrays.asList(first,second,third);
-        this.adminRepository.saveAll(admins);
+        // List<Admin> admins = Arrays.asList(first,second,third);
+        // this.adminRepository.saveAll(admins);
 
         NGO first_ngo = new NGO(
                 "Child Care",
@@ -71,8 +71,8 @@ public class DbSeeder implements CommandLineRunner {
                 new ArrayList<>()
         );
 
-        this.ngoRepository.deleteAll();
-        this.ngoRepository.save(first_ngo);
+        // this.ngoRepository.deleteAll();
+        // this.ngoRepository.save(first_ngo);
 
         User first_user = new User(
                 "Maya",
@@ -90,10 +90,10 @@ public class DbSeeder implements CommandLineRunner {
                 new Date(1996, 12, 1)
         );
 
-        this.userRepository.deleteAll();
+        // this.userRepository.deleteAll();
 
-        List<User> users = Arrays.asList(first_user,second_user);
-        this.userRepository.saveAll(users);
+        // List<User> users = Arrays.asList(first_user,second_user);
+        // this.userRepository.saveAll(users);
 
     }
 }
