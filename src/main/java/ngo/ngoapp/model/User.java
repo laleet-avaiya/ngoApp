@@ -14,17 +14,14 @@ public class User {
     private String phone;
     private String email;
     private String password;
-    private Date date_of_birth;
+    private String date_of_birth;
 
     public User(String name, String phone, String email, String password, String date_of_birth) throws Exception{
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.password = password;
-
-        String sDate1="31/12/1998";
-        Date date=new SimpleDateFormat("dd/MM/yyyy").parse(date_of_birth);
-        this.date_of_birth = date;
+        this.date_of_birth = date_of_birth;
     }
 
     public String getId() {
@@ -67,11 +64,5 @@ public class User {
         this.password = password;
     }
 
-    public Date getDate_of_birth() {
-        return date_of_birth;
-    }
 
-    public void setDate_of_birth(Date date_of_birth) {
-        this.date_of_birth = date_of_birth;
-    }
 }
