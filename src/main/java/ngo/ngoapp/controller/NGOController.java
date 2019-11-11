@@ -48,7 +48,7 @@ public class NGOController {
         System.out.println(ngo.getEmail());
 
         NGO newngo = this.ngoRepository.findByEmail(ngo.getEmail());
-        newngo.setStatus(ngo.getStatus());
+        newngo.setStatus(ngo.isStatus());
 
         this.ngoRepository.save(newngo);
         return newngo;
@@ -67,7 +67,7 @@ public class NGOController {
         }
 
         if(authorities.getPassword().equals(ngo.getPassword())) {
-            if(authorities.getStatus())
+            if(authorities.isStatus())
             {
                 return authorities;
             }
