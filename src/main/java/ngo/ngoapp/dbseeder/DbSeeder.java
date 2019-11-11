@@ -74,7 +74,7 @@ public class DbSeeder implements CommandLineRunner {
         );
 
         // this.ngoRepository.deleteAll();
-         this.ngoRepository.save(first_ngo);
+//         this.ngoRepository.save(first_ngo);
 
         User first_user = new User(
                 "Maya",
