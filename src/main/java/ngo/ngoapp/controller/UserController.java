@@ -69,7 +69,11 @@ public class UserController {
     }
 
 
-    // Add Event
+    /*--------------------------------------------------------------------*/
+    /*----------------------------volunteer-------------------------------*/
+    /*--------------------------------------------------------------------*/
+
+
     @PutMapping("/volunteer")
     public Volunteer insertEvent(@RequestParam String user_id, @RequestParam String event_id){
         Volunteer volunteer = new Volunteer(user_id,event_id);
@@ -95,8 +99,9 @@ public class UserController {
         return volunteers;
     }
 
-
+    /*--------------------------------------------------------------------*/
     /*------------------------Donate To NGO-------------------------------*/
+    /*--------------------------------------------------------------------*/
 
     @PutMapping("/donation")
     public Donation InsertDonation(@RequestParam String ngo_id,@RequestParam String user_id,@RequestParam float amount){
