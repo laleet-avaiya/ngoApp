@@ -1,8 +1,10 @@
 package ngo.ngoapp.controller;
 
 
+import ngo.ngoapp.model.Donation;
 import ngo.ngoapp.model.User;
 import ngo.ngoapp.model.Volunteer;
+import ngo.ngoapp.mongorepository.DonationRepository;
 import ngo.ngoapp.mongorepository.UserRepository;
 import ngo.ngoapp.mongorepository.VolunteerRepository;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +18,12 @@ public class UserController {
 
     private UserRepository userRepository;
     private VolunteerRepository volunteerRepository;
+    private DonationRepository donationRepository;
 
-    public UserController(UserRepository userRepository, VolunteerRepository volunteerRepository) {
+    public UserController(UserRepository userRepository, VolunteerRepository volunteerRepository, DonationRepository donationRepository) {
         this.userRepository = userRepository;
         this.volunteerRepository = volunteerRepository;
+        this.donationRepository = donationRepository;
     }
 
     @PutMapping()
@@ -85,8 +89,37 @@ public class UserController {
     @GetMapping("/volunteer_by_event_id")
     public List<Volunteer> getVolunteersByEventId(@RequestParam String event_id){
         List<Volunteer> volunteers = this.volunteerRepository.findAll();
+
         volunteers.removeIf(volunteer -> !volunteer.getEvent_id().equals(event_id));
+
         return volunteers;
+    }
+
+
+    /*------------------------Donate To NGO-------------------------------*/
+
+    @PutMapping("/donation")
+    public Donation InsertDonation(@RequestParam String ngo_id,@RequestParam String user_id,@RequestParam float amount){
+        Donation donation = new Donation(user_id,ngo_id,amount);
+        this.donationRepository.save(donation);
+        return donation;
+    }
+
+
+    // get list of volunteer_by_user_id
+    @GetMapping("/donations_by_user_id")
+    public List<Donation> getDonationByUserId(@RequestParam String user_id){
+        List<Donation> donations = this.donationRepository.findAll();
+        donations.removeIf(donation -> !donation.getUser_id().equals(user_id));
+        return donations;
+    }
+
+    // get list of volunteer_by_ngo_id
+    @GetMapping("/donations_by_ngo_id")
+    public List<Donation> getDonationsByNgoId(@RequestParam String ngo_id){
+        List<Donation> donations = this.donationRepository.findAll();
+        donations.removeIf(donation -> !donation.getNgo_id().equals(ngo_id));
+        return donations;
     }
 
 }
