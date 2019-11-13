@@ -46,8 +46,8 @@ public class NGOController {
     }
 
     // NGO by ngo id
-    @PostMapping("/ngo_by_id")
-    public NGO getVolunteersByEventId(@RequestParam String ngo_id){
+    @GetMapping("/ngo_by_id")
+    public NGO getNgoById(@RequestParam String ngo_id){
         List<NGO> ngos = this.ngoRepository.findAll();
         ngos.removeIf(ngo -> !ngo.getId().equals(ngo_id));
         return ngos.get(0);
