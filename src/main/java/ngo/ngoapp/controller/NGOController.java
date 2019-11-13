@@ -3,6 +3,7 @@ package ngo.ngoapp.controller;
 import ngo.ngoapp.model.Event;
 import ngo.ngoapp.model.NGO;
 import ngo.ngoapp.model.Post;
+import ngo.ngoapp.model.Volunteer;
 import ngo.ngoapp.mongorepository.EventRepository;
 import ngo.ngoapp.mongorepository.NGORepository;
 import ngo.ngoapp.mongorepository.PostRepository;
@@ -44,6 +45,14 @@ public class NGOController {
         return ngos;
     }
 
+    // NGO by ngo id
+    @PostMapping("/ngo_by_id")
+    public NGO getVolunteersByEventId(@RequestParam String ngo_id){
+        List<NGO> ngos = this.ngoRepository.findAll();
+        ngos.removeIf(ngo -> !ngo.getId().equals(ngo_id));
+        return ngos.get(0);
+    }
+
     @PostMapping("/approve")
     public NGO approve(@RequestBody NGO ngo)
     {
@@ -59,7 +68,7 @@ public class NGOController {
     @PostMapping("/login")
     public NGO login(@RequestBody NGO ngo){
 
-        System.out.println(ngo.getEmail());
+
         NGO authorities = this.ngoRepository.findByEmail(ngo.getEmail());
 
         if(authorities==null)
@@ -85,6 +94,10 @@ public class NGOController {
     }
 
 
+    /*--------------------------------------------------------------------*/
+    /*---------------------------------post-------------------------------*/
+    /*--------------------------------------------------------------------*/
+
     // Add Post
     @PutMapping("/post")
     public Post insert(@RequestParam String ngo_id,@RequestParam String title,@RequestParam String description){
@@ -101,6 +114,11 @@ public class NGOController {
         return posts;
     }
 
+
+    /*--------------------------------------------------------------------*/
+    /*---------------------------------event-------------------------------*/
+    /*--------------------------------------------------------------------*/
+
     // Add Event
     @PutMapping("/event")
     public Event insertEvent(@RequestParam String ngo_id,@RequestParam String title,@RequestParam String description){
@@ -116,7 +134,4 @@ public class NGOController {
         events.removeIf(event -> !event.getNgo_id().equals(ngo_id));
         return events;
     }
-
-
-
 }

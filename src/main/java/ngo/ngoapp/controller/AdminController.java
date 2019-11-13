@@ -54,7 +54,6 @@ public class AdminController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@RequestParam String email, @RequestParam String password, ModelMap model){
         Admin authorities = this.adminRepository.findByEmail(email);
-        System.out.println(email + " " + password);
         if(authorities==null)
         {
             model.put("errorMsg", "User Not Found!!!");
