@@ -116,8 +116,8 @@
                 <th>Name</th>
                 <th>Phone</th>
                 <th>Email</th>
-                <th>Status</th>
                 <th>registered_on</th>
+                <th>Status</th>
             </tr>
             </thead>
             <tbody>
