@@ -127,7 +127,7 @@ public class NGOController {
     }
 
     // get list of event for given NGO id
-    @GetMapping("/event")
+    @GetMapping("/events_by_ngo_id")
     public List<Event> getEvents(@RequestParam String ngo_id){
         List<Event> events = this.eventRepository.findAll();
         events.removeIf(event -> !event.getNgo_id().equals(ngo_id));

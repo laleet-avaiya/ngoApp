@@ -1,6 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html lang="en">
 
 
@@ -53,7 +53,7 @@
                     <div class="row justify-content-center">
                         <button type="submit" class="btn btn-outline-success w-50">Login</button>
                     </div>
-                    <p class="m-1 text-danger">${errorMsg}</p>
+
                 </div>
             </div>
 
