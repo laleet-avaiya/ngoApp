@@ -46,6 +46,7 @@ public class AdminController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(ModelMap model){
+        System.out.println("Hello");
         if(model.containsKey("name"))
             return "redirect:home";
         return "login";
