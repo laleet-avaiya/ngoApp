@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,8 +12,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <style>
+        body{
+            padding: 0px 2px;
+            margin: 0px 2px;
+        }
         .lighten-1 {
-            background-color: #a6c;
+            /*background-color: #a6c;*/
+            background-color: forestgreen;
+            font-weight: bold;
+            font-family: SansSerif;
+            letter-spacing: 1px;
+        }
+
+        .ngo-label{
+            font-family: SansSerif;
+            margin: 20px;
         }
     </style>
 </head>
@@ -50,7 +64,7 @@
                         aria-labelledby="navbarDropdownMenuLink-55">
                         <a class="dropdown-item" href="#">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="admin/logout">Logout</a>
+                        <a class="dropdown-item" href="logout">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -58,8 +72,91 @@
     </nav>
 
 
+    <div class="container">
+    <div class="row mt-5">
+        <div class="col-3">
+            <div class="card">
+                <div class="card-header bg-dark text-white">Registered NGO'S :
+                    <span class="badge badge-primary">${ngos.size()}</span>
+                </div>
+            </div>
+        </div>
 
-    <p>${email}</p>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-header bg-success text-white">Approved NGO'S:
+                    <span class="badge badge-secondary">${ngos.size()}</span></div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="card">
+                <div class="card-header bg-info text-white">Rejected NGO'S:
+                    <span class="badge badge-warning">${ngos.size()}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-header bg-danger text-white">Rejected NGO'S:
+                    <span class="badge badge-warning">${ngos.size()}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <div class="container mt-5">
+        <h2 class="text-center ngo-label">NGO's</h2>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Logo</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>registered_on</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${ngos}" var="ngo">
+            <tr>
+                <td><img src="${ngo.logo}" height="30" width="30"></img></td>
+                <td>${ngo.name}</td>
+                <td>${ngo.phone}</td>
+                <td>${ngo.email}</td>
+                <td>${ngo.registered_on}</td>
+
+                <td>
+                <c:if test = "${ngo.status==true}">
+                    <form name="submitForm" method="POST" action="approve">
+                        <input type="hidden" name="email" value="${ngo.email}">
+
+                        <A HREF="javascript:document.submitForm.submit()"><button class="btn btn-success">Reject</button></A>
+                    </form>
+                </c:if>
+
+                    <c:if test = "${ngo.status==false}">
+                        <form name="submitForm" method="POST" action="approve">
+                            <input type="hidden" name="email" value="${ngo.email}">
+                            <A HREF="javascript:document.submitForm.submit()"><button class="btn btn-danger">Approve</button></A>
+                        </form>
+                    </c:if>
+
+                </td>
+
+            </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
 
 
 </body>

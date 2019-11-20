@@ -6,13 +6,16 @@ import ngo.ngoapp.model.Post;
 import ngo.ngoapp.mongorepository.EventRepository;
 import ngo.ngoapp.mongorepository.NGORepository;
 import ngo.ngoapp.mongorepository.PostRepository;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
 
 
-@RestController
+//@RestController
+@Controller
 @RequestMapping("/ngo")
 public class NGOController {
 
@@ -33,12 +36,14 @@ public class NGOController {
     }
 
     @PostMapping()
+    @ResponseBody
     public NGO update(@RequestBody NGO ngo){
         this.ngoRepository.save(ngo);
         return ngo;
     }
 
     @GetMapping("/all")
+    @ResponseBody
     public List<NGO> getAll(){
         List<NGO> ngos= this.ngoRepository.findAll();
         return ngos;
@@ -46,6 +51,7 @@ public class NGOController {
 
     // NGO by ngo id
     @GetMapping("/ngo_by_id")
+    @ResponseBody
     public NGO getNgoById(@RequestParam String ngo_id){
         List<NGO> ngos = this.ngoRepository.findAll();
         ngos.removeIf(ngo -> !ngo.getId().equals(ngo_id));
@@ -53,15 +59,15 @@ public class NGOController {
     }
 
     @PostMapping("/approve")
-    public NGO approve(@RequestBody NGO ngo)
+    public String approve(@RequestParam MultiValueMap body)
     {
-        System.out.println(ngo.getEmail());
+        String email = (String) body .getFirst("email");
 
-        NGO newngo = this.ngoRepository.findByEmail(ngo.getEmail());
-        newngo.setStatus(ngo.isStatus());
+        NGO newngo = this.ngoRepository.findByEmail(email);
+        newngo.setStatus(!newngo.isStatus());
 
         this.ngoRepository.save(newngo);
-        return newngo;
+        return "redirect:home";
     }
 
     @PostMapping("/login")
@@ -99,6 +105,7 @@ public class NGOController {
 
     // Add Post
     @PutMapping("/post")
+    @ResponseBody
     public Post insert(@RequestParam String ngo_id,@RequestParam String title,@RequestParam String description){
         Post post = new Post(ngo_id,title,description);
         this.postRepository.save(post);
@@ -107,6 +114,7 @@ public class NGOController {
 
     // get list of post for given NGO id
     @GetMapping("/post")
+    @ResponseBody
     public List<Post> getPosts(@RequestParam String ngo_id){
         List<Post> posts = this.postRepository.findAll();
         posts.removeIf(post -> !post.getNgo_id().equals(ngo_id));
@@ -120,6 +128,7 @@ public class NGOController {
 
     // Add Event
     @PutMapping("/event")
+    @ResponseBody
     public Event insertEvent(@RequestParam String ngo_id,@RequestParam String title,@RequestParam String description){
         Event event = new Event(ngo_id,title,description);
         this.eventRepository.save(event);
@@ -128,6 +137,7 @@ public class NGOController {
 
     // get list of event for given NGO id
     @GetMapping("/events_by_ngo_id")
+    @ResponseBody
     public List<Event> getEvents(@RequestParam String ngo_id){
         List<Event> events = this.eventRepository.findAll();
         events.removeIf(event -> !event.getNgo_id().equals(ngo_id));
